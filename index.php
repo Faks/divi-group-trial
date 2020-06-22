@@ -6,7 +6,7 @@ use App\Controllers\IsDivisibleController;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$isDivisibleController = new isDivisibleController(
+$isFooBarQixController = new isDivisibleController(
     [
         'max'       => 1000,
         'separator' => ', ',
@@ -19,11 +19,11 @@ $isDivisibleController = new isDivisibleController(
     ]
 );
 
-echo $isDivisibleController->iterate();
+echo $isFooBarQixController->iterate();
 
 echo '<p></p>';
 
-$isDivisibleControllerWithAppend = new isDivisibleController(
+$isFooBarQixControllerWithAppend = new isDivisibleController(
     [
         'max'       => 1000,
         'separator' => ', ',
@@ -36,4 +36,38 @@ $isDivisibleControllerWithAppend = new isDivisibleController(
     ]
 );
 
-echo $isDivisibleControllerWithAppend->iterate();
+echo $isFooBarQixControllerWithAppend->iterate();
+
+echo '<p></p>';
+
+$InfQixFooController = new isDivisibleController(
+    [
+        'max'       => 1000,
+        'separator' => '; ',
+        'append'    => false,
+        'matcher'   => [
+            8 => 'Inf',
+            7 => 'Qix',
+            5 => 'Bar',
+        ]
+    ]
+);
+
+echo $InfQixFooController->iterate();
+
+echo '<p></p>';
+
+$InfQixFooWithAppendController = new isDivisibleController(
+    [
+        'max'       => 1000,
+        'separator' => '; ',
+        'append'    => true,
+        'matcher'   => [
+            3 => 'Foo',
+            8 => 'Inf',
+            7 => 'Qix',
+        ]
+    ]
+);
+
+echo $InfQixFooWithAppendController->iterate();

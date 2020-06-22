@@ -12,7 +12,7 @@ final class IsDivisibleTest extends TestCase
     /** @test */
     final public function isFoo()
     {
-        $isDivisibleController = new isDivisibleController(
+        $isFooBarQixController = new isDivisibleController(
             [
                 'max'       => 3,
                 'separator' => ', ',
@@ -23,13 +23,13 @@ final class IsDivisibleTest extends TestCase
             ]
         );
 
-        $this->assertSame('Foo', $isDivisibleController->iterate());
+        $this->assertSame('Foo', $isFooBarQixController->iterate());
     }
 
     /** @test */
     final public function isBar()
     {
-        $isDivisibleController = new isDivisibleController(
+        $isFooBarQixController = new isDivisibleController(
             [
                 'max'       => 5,
                 'separator' => ', ',
@@ -40,13 +40,13 @@ final class IsDivisibleTest extends TestCase
             ]
         );
 
-        $this->assertSame('Bar', $isDivisibleController->iterate());
+        $this->assertSame('Bar', $isFooBarQixController->iterate());
     }
 
     /** @test */
     final public function isQix()
     {
-        $isDivisibleController = new isDivisibleController(
+        $isFooBarQixController = new isDivisibleController(
             [
                 'max'       => 7,
                 'separator' => ', ',
@@ -57,13 +57,14 @@ final class IsDivisibleTest extends TestCase
             ]
         );
 
-        $this->assertSame('Qix', $isDivisibleController->iterate());
+        $this->assertSame('Qix', $isFooBarQixController->iterate());
     }
+
 
     /** @test */
     final public function isFooWithAppend()
     {
-        $isDivisibleController = new isDivisibleController(
+        $isFooBarQixControllerWithAppend = new isDivisibleController(
             [
                 'max'       => 3,
                 'separator' => ', ',
@@ -74,13 +75,13 @@ final class IsDivisibleTest extends TestCase
             ]
         );
 
-        $this->assertSame('3, Foo', $isDivisibleController->iterate());
+        $this->assertSame('3, Foo', $isFooBarQixControllerWithAppend->iterate());
     }
 
     /** @test */
     final public function isBarWithAppend()
     {
-        $isDivisibleController = new isDivisibleController(
+        $isFooBarQixControllerWithAppend = new isDivisibleController(
             [
                 'max'       => 5,
                 'separator' => ', ',
@@ -91,13 +92,13 @@ final class IsDivisibleTest extends TestCase
             ]
         );
 
-        $this->assertSame('5, Bar', $isDivisibleController->iterate());
+        $this->assertSame('5, Bar', $isFooBarQixControllerWithAppend->iterate());
     }
 
     /** @test */
     final public function isQixWithAppend()
     {
-        $isDivisibleController = new isDivisibleController(
+        $isFooBarQixControllerWithAppend = new isDivisibleController(
             [
                 'max'       => 7,
                 'separator' => ', ',
@@ -108,6 +109,109 @@ final class IsDivisibleTest extends TestCase
             ]
         );
 
-        $this->assertSame('7, Qix', $isDivisibleController->iterate());
+        $this->assertSame('7, Qix', $isFooBarQixControllerWithAppend->iterate());
+    }
+
+
+    /** @test */
+    final public function isInfWithSemiColon()
+    {
+        $InfQixFooController = new isDivisibleController(
+            [
+                'max'       => 8,
+                'separator' => '; ',
+                'append'    => false,
+                'matcher'   => [
+                    8 => 'Inf',
+                ]
+            ]
+        );
+
+        $this->assertSame('Inf', $InfQixFooController->iterate());
+    }
+
+    /** @test */
+    final public function isQixWithSemiColon()
+    {
+        $InfQixFooController = new isDivisibleController(
+            [
+                'max'       => 7,
+                'separator' => '; ',
+                'append'    => false,
+                'matcher'   => [
+                    7 => 'Qix',
+                ]
+            ]
+        );
+
+        $this->assertSame('Qix', $InfQixFooController->iterate());
+    }
+
+    /** @test */
+    final public function isFooWithSemiColon()
+    {
+        $InfQixFooController = new isDivisibleController(
+            [
+                'max'       => 3,
+                'separator' => '; ',
+                'append'    => false,
+                'matcher'   => [
+                    3 => 'Foo',
+                ]
+            ]
+        );
+
+        $this->assertSame('Foo', $InfQixFooController->iterate());
+    }
+
+    /** @test */
+    final public function isFooWithSemiColonAppend()
+    {
+        $InfQixFooWithAppendController = new isDivisibleController(
+            [
+                'max'       => 3,
+                'separator' => '; ',
+                'append'    => true,
+                'matcher'   => [
+                    3 => 'Foo',
+                ]
+            ]
+        );
+
+        $this->assertSame('3, Foo', $InfQixFooWithAppendController->iterate());
+    }
+
+    /** @test */
+    final public function isInfWithSemiColonAppend()
+    {
+        $InfQixFooWithAppendController = new isDivisibleController(
+            [
+                'max'       => 8,
+                'separator' => '; ',
+                'append'    => true,
+                'matcher'   => [
+                    8 => 'Inf',
+                ]
+            ]
+        );
+
+        $this->assertSame('8, Inf', $InfQixFooWithAppendController->iterate());
+    }
+
+    /** @test */
+    final public function isQixWithSemiColonAppend()
+    {
+        $InfQixFooWithAppendController = new isDivisibleController(
+            [
+                'max'       => 7,
+                'separator' => '; ',
+                'append'    => true,
+                'matcher'   => [
+                    7 => 'Qix',
+                ]
+            ]
+        );
+
+        $this->assertSame('7, Qix', $InfQixFooWithAppendController->iterate());
     }
 }
