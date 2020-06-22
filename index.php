@@ -10,6 +10,7 @@ $isDivisibleController = new isDivisibleController(
     [
         'max'       => 1000,
         'separator' => ', ',
+        'append'    => false,
         'matcher'   => [
             3 => 'Foo',
             5 => 'Bar',
@@ -19,3 +20,20 @@ $isDivisibleController = new isDivisibleController(
 );
 
 echo $isDivisibleController->iterate();
+
+echo '<p></p>';
+
+$isDivisibleControllerWithAppend = new isDivisibleController(
+    [
+        'max'       => 1000,
+        'separator' => ', ',
+        'append'    => true,
+        'matcher'   => [
+            3 => 'Foo',
+            5 => 'Bar',
+            7 => 'Qix',
+        ]
+    ]
+);
+
+echo $isDivisibleControllerWithAppend->iterate();

@@ -36,7 +36,7 @@ class IsDivisibleController
         for ($i = 0; $i <= $this->config['max']; $i++) {
             foreach ($this->config['matcher'] as $integer => $response) {
                 if ($i >= 1 && $i % $integer === 0) {
-                    $match[$i] = $response;
+                    $match[$i] = $this->config['append'] ? $i . ', ' . $response : $response;
                 }
             }
         }
