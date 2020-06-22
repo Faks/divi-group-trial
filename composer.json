@@ -1,0 +1,27 @@
+{
+    "name": "faks/divi-group-trial.solum-designum.eu",
+    "require": {
+        "php": "^7.4",
+        "phpunit/phpunit": "^9.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oskars Germovs",
+            "email": "sia_dev@inbox.lv"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.1"
+    }
+}
