@@ -7,6 +7,8 @@ namespace Tests;
 use App\Controllers\IsDivisibleController;
 use PHPUnit\Framework\TestCase;
 
+use function preg_match;
+
 final class IsDivisibleTest extends TestCase
 {
     /** @test */
@@ -213,5 +215,27 @@ final class IsDivisibleTest extends TestCase
         );
 
         $this->assertSame('7, Qix', $InfQixFooWithAppendController->iterate());
+    }
+
+    /** @test */
+    final public function isStepFinal()
+    {
+        $InfQixFooControllerFinal = new isDivisibleController(
+            [
+                'max'       => 170,
+                'separator' => '; ',
+                'append'    => false,
+                'rewire'    => true,
+                'matcher'   => [
+                    8 => 'Inf',
+                    7 => 'Qix',
+                    3 => 'Foo',
+                ]
+            ]
+        );
+
+        preg_match('/(Inf; Qix; FooInf)/', $InfQixFooControllerFinal->iterate(), $matches, PREG_OFFSET_CAPTURE, 0);
+
+        $this->assertSame('Inf; Qix; FooInf', $matches[0][0]);
     }
 }

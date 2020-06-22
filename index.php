@@ -48,7 +48,7 @@ $InfQixFooController = new isDivisibleController(
         'matcher'   => [
             8 => 'Inf',
             7 => 'Qix',
-            5 => 'Bar',
+            3 => 'Foo',
         ]
     ]
 );
@@ -71,3 +71,22 @@ $InfQixFooWithAppendController = new isDivisibleController(
 );
 
 echo $InfQixFooWithAppendController->iterate();
+
+echo '<p></p>';
+
+$InfQixFooControllerFinal = new isDivisibleController(
+    [
+        'max'       => 1000,
+        'separator' => '; ',
+        'append'    => false,
+        'rewire'    => true,
+        'matcher'   => [
+            8 => 'Inf',
+            7 => 'Qix',
+            3 => 'Foo',
+        ]
+    ]
+);
+
+echo $InfQixFooControllerFinal->iterate();
+

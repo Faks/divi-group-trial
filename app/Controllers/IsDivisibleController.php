@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use function implode;
+use function preg_replace;
 
 class IsDivisibleController
 {
@@ -12,6 +13,11 @@ class IsDivisibleController
      * @var array
      */
     private array $config;
+
+    /**
+     * @var string
+     */
+    protected static string $rewireRegex = '/\sInf; Qix; Foo;/m';
 
     /**
      * IsDivisibleService constructor.
@@ -29,6 +35,18 @@ class IsDivisibleController
     {
         $match = [];
 
+        if (isset($this->config['max']) === false) {
+            echo 'Please Setup max.';
+        }
+
+        if (isset($this->config['separator']) === false) {
+            echo 'Please Setup Separator.';
+        }
+
+        if (isset($this->config['matcher']) === false) {
+            echo 'Please Setup matcher.';
+        }
+
         if ($this->config['max'] === 0) {
             die('Matcher Invalid max value.');
         }
@@ -41,6 +59,12 @@ class IsDivisibleController
             }
         }
 
-        return implode($this->config['separator'], $match);
+        $baseResponse = implode($this->config['separator'], $match);
+
+        if (isset($this->config['rewire']) === true) {
+            return preg_replace(self::$rewireRegex, 'Inf; Qix; FooInf', $baseResponse);
+        }
+
+        return $baseResponse;
     }
 }
