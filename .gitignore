@@ -104,3 +104,4 @@ fabric.properties
 
 .idea
 /.idea
+/.phpunit.result.cache

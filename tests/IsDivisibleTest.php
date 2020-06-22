@@ -40,4 +40,20 @@ final class IsDivisibleTest extends TestCase
 
         $this->assertSame('Bar', $isDivisibleController->iterate());
     }
+
+    /** @test */
+    final public function isQix()
+    {
+        $isDivisibleController = new isDivisibleController(
+            [
+                'max'       => 7,
+                'separator' => ', ',
+                'matcher'   => [
+                    7 => 'Qix',
+                ]
+            ]
+        );
+
+        $this->assertSame('Qix', $isDivisibleController->iterate());
+    }
 }
