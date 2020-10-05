@@ -6,6 +6,16 @@ use App\Controllers\IsDivisibleController;
 
 require __DIR__ . '/vendor/autoload.php';
 
+echo '<ul style="display: flex;
+    list-style: none;">
+                  <li>
+                        <a style="padding-right: 15px;" href="https://bitbucket.org/Faks/divi-group-trial/src/master/">Bitbucket</a>
+                    </li>
+                    <li>
+                        <a style="padding-right: 15px;" href="https://www.linkedin.com/in/oskars-germovs-a94b3318a/">LinkedIn</a>
+                    </li>
+</ul><p></p>';
+
 $isFooBarQixController = new isDivisibleController(
     [
         'max'       => 1000,
