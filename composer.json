@@ -1,7 +1,7 @@
 {
     "name": "faks/divi-group-trial.solum-designum.eu",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "phpunit/phpunit": "^9.2"
     },
     "license": "MIT",
